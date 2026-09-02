@@ -5,11 +5,20 @@ domain; it runs six isolated sub-agents from first page fetch to CRM-ready
 action, streams every tool call and token to a live console, and hands back a
 scored dossier, a competitive read, a leakage report and a four-touch sequence.
 
+**Live demo: [outboundengine-rosy.vercel.app](https://outboundengine-rosy.vercel.app)** — click
+the recorded target in the left column and watch the six agents stream for 40 seconds.
+
 **It runs with no API key.** Clone, install, `npm run dev`. A completed run is
 already there on first load, and clicking the recorded target streams the whole
 pipeline again at its original pace, with the tool calls really executing
 against a cached copy of the pages. Set `ANTHROPIC_API_KEY` and the same
 pipeline runs live against any domain.
+
+> The hosted demo runs on Vercel, where the SQLite file lives in `/tmp` and is
+> therefore per-instance: the seeded run is always restored on boot, but runs a
+> visitor starts do not survive a cold start. Nothing else differs. For a
+> deployment that keeps its history, `railway.json` is committed and mounts a
+> volume at `/data`.
 
 ```bash
 npm install
