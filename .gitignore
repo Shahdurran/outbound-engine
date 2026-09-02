@@ -21,3 +21,5 @@ Thumbs.db
 
 # Claude Code local preview config
 .claude/
+
+.vercel
