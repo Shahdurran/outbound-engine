@@ -1,3 +1,4 @@
+import { ensureSeeded } from "../../../../lib/bootstrap";
 import { pushRunToCrm, type TouchInput } from "../../../../lib/crm-push";
 import { getRun } from "../../../../lib/db/runs";
 
@@ -16,6 +17,8 @@ export async function POST(request: Request): Promise<Response> {
   } catch {
     return Response.json({ error: "Body must be JSON." }, { status: 400 });
   }
+
+  await ensureSeeded();
 
   const runId = typeof body.runId === "string" ? body.runId : "";
   if (!getRun(runId)) {

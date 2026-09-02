@@ -1,3 +1,4 @@
+import { ensureSeeded } from "../../../lib/bootstrap";
 import { createRun } from "../../../lib/db/runs";
 import { runPipeline } from "../../../lib/orchestrator";
 import { newRunId, normalizeDomain, resolveProvider } from "../../../lib/run-context";
@@ -30,6 +31,8 @@ export async function POST(request: Request): Promise<Response> {
   if (!domain || !domain.includes(".")) {
     return Response.json({ error: "Provide a company domain, e.g. acmedental.com" }, { status: 400 });
   }
+
+  await ensureSeeded();
 
   const resolution = resolveProvider(domain);
   if (!resolution.ok) {
