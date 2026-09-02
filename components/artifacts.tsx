@@ -22,6 +22,23 @@ const COMPONENT_LABELS: Record<ScoringComponent, string> = {
   reachability: "Reachability",
 };
 
+/**
+ * Domains have no natural break points, so a narrow column snaps them
+ * mid-word ("acmedent / al.com"). Offering the browser a break before the TLD
+ * makes the wrap read as deliberate.
+ */
+function BreakableDomain({ domain }: { domain: string }) {
+  const split = domain.lastIndexOf(".");
+  if (split <= 0) return <>{domain}</>;
+  return (
+    <>
+      {domain.slice(0, split)}
+      <wbr />
+      {domain.slice(split)}
+    </>
+  );
+}
+
 function Empty({ children }: { children: React.ReactNode }) {
   return <p className="px-4 py-8 text-center text-2xs text-fg-faint">{children}</p>;
 }
@@ -34,18 +51,28 @@ function Badge({ children, className = "" }: { children: React.ReactNode; classN
   );
 }
 
-/** A metric always renders with its provenance. That is the whole point of it. */
-function MetricCell({ metric }: { metric: Metric }) {
+/**
+ * A metric always renders with its provenance. That is the whole point of it.
+ *
+ * `clamp` keeps a long qualitative value from turning a narrow table column
+ * into a one-word-per-line ribbon; the full text stays in the title.
+ */
+function MetricCell({ metric, clamp = false }: { metric: Metric; clamp?: boolean }) {
+  const provenance = metric.evidence.map((e) => `${e.source}\n${e.excerpt}`).join("\n\n");
   return (
-    <div className="group relative">
-      <span className={metric.basis === "estimated" ? "text-fg-dim" : "text-fg"}>
+    <div title={clamp ? `${formatMetric(metric)}\n\n${provenance}` : undefined}>
+      <span
+        className={`${metric.basis === "estimated" ? "text-fg-dim" : "text-fg"} ${
+          clamp ? "line-clamp-3" : ""
+        }`}
+      >
         {formatMetric(metric)}
       </span>
       <span
-        className={`ml-1.5 font-mono text-2xs ${
+        className={`font-mono text-2xs ${clamp ? "mt-0.5 block" : "ml-1.5"} ${
           metric.basis === "estimated" ? "text-state-warn" : "text-accent-dim"
         }`}
-        title={metric.evidence.map((e) => `${e.source}\n${e.excerpt}`).join("\n\n")}
+        title={provenance}
       >
         {metric.basis === "estimated" ? `est/${metric.confidence}` : "derived"}
       </span>
@@ -216,16 +243,16 @@ function Competitive({ artifacts }: { artifacts: RunArtifacts }) {
                     }`}
                   >
                     <td className="px-3 py-2 font-mono text-fg">
-                      {entry.domain}
-                      {entry.isProspect && (
-                        <span className="ml-1.5 text-accent-dim">prospect</span>
-                      )}
+                      <div>
+                        <BreakableDomain domain={entry.domain} />
+                      </div>
+                      {entry.isProspect && <span className="text-accent-dim">prospect</span>}
                     </td>
-                    <td className="px-3 py-2">
-                      <MetricCell metric={entry.indexedContentVolume} />
+                    <td className="whitespace-nowrap px-3 py-2">
+                      <MetricCell metric={entry.indexedContentVolume} clamp />
                     </td>
-                    <td className="max-w-[220px] px-3 py-2 text-fg-dim">
-                      <MetricCell metric={entry.topicalCoverage} />
+                    <td className="w-[46%] px-3 py-2 text-fg-dim">
+                      <MetricCell metric={entry.topicalCoverage} clamp />
                     </td>
                     <td className="px-3 py-2">
                       <span

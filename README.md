@@ -5,16 +5,48 @@ domain; it runs six isolated sub-agents from first page fetch to CRM-ready
 action, streams every tool call and token to a live console, and hands back a
 scored dossier, a competitive read, a leakage report and a four-touch sequence.
 
-**It runs with no API key.** Clone, install, seed, `npm run dev`. The recorded
-run replays with its original tool calls and timings, and the tool calls really
-execute against a cached copy of the pages. Set `ANTHROPIC_API_KEY` and the
-same pipeline runs live against any domain.
+**It runs with no API key.** Clone, install, `npm run dev`. A completed run is
+already there on first load, and clicking the recorded target streams the whole
+pipeline again at its original pace, with the tool calls really executing
+against a cached copy of the pages. Set `ANTHROPIC_API_KEY` and the same
+pipeline runs live against any domain.
 
 ```bash
 npm install
-npm run seed     # one completed run, so the console has something in it
-npm run dev
+npm run dev      # localhost:3000, already seeded with a completed run
 ```
+
+---
+
+## What it looks like
+
+The centre column is the point. Six sub-agents, each its own model call, streaming
+nested tool calls with timestamps, cache hits, per-agent duration, tokens and cost.
+
+![The live agent trace and the scored dossier](docs/screenshots/dossier.png)
+
+Scoring weights live in `config/scoring.ts` and the weighting is applied in code, so
+the breakdown always reconciles with the headline number.
+
+**Competitive** — every figure carries its basis and confidence. Nothing here is a
+bare number: `est/medium` and `derived` are enforced by the schema, not the prompt.
+
+![Competitive set and organic visibility, every figure labelled](docs/screenshots/competitive.png)
+
+**Leakage** — conversion leakage on their own funnel, competitor leakage where a rival
+owns an intent cluster, each with evidence, an impact rating and a specific fix.
+
+![Conversion and competitor leakage findings](docs/screenshots/leakage.png)
+
+**Outreach** — four touches, editable before they go anywhere, each citing a finding
+this run actually produced. Subject length and word count are enforced by the schema.
+
+![The four-touch sequence, editable, each citing a finding](docs/screenshots/outreach.png)
+
+**CRM** — the exact payloads written, with HubSpot property names. Shown raw so the
+"a real adapter is a drop-in swap" claim is checkable rather than asserted.
+
+![The CRM payloads, with HubSpot property names](docs/screenshots/crm.png)
 
 ---
 
@@ -353,8 +385,8 @@ tests/                      30 tests, fully offline
 ## Commands
 
 ```bash
-npm run dev          # console at localhost:3000
-npm run seed         # one completed run, idempotent
+npm run dev          # console at localhost:3000, seeded on first request
+npm run snapshot     # re-capture the seeded run from a live pipeline pass
 npm run agent        # headless pipeline
 npm run agent:sdk    # Agent SDK + MCP variant (needs credentials)
 npm run mcp          # MCP server on stdio

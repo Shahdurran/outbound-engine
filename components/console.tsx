@@ -185,7 +185,7 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
       : "Enter a domain and the six sub-agents run in sequence. Each one is its own model call with its own tools and a strict JSON contract; nothing is shared between them except the typed output object.";
 
   return (
-    <div className="grid h-screen grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[300px_1fr_440px] lg:grid-rows-1">
+    <div className="grid h-screen grid-cols-1 grid-rows-[auto_1fr] lg:grid-cols-[300px_1fr_490px] lg:grid-rows-1">
       {/* Left: input + history */}
       <aside className="flex flex-col overflow-y-auto border-b border-ink-500 lg:border-b-0 lg:border-r">
         <div className="border-b border-ink-500 px-4 py-3">
