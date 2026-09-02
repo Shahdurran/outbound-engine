@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: #08090b;
+  color: #e6e8ec;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dense instrument-panel scrollbars. The trace is the centrepiece and a fat
+   default scrollbar eats into it. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2e333b transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #23272e;
+  border-radius: 0;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #2e333b;
+}
+
+@layer components {
+  .panel {
+    @apply border border-ink-500 bg-ink-800;
+  }
+
+  .panel-header {
+    @apply flex items-center justify-between border-b border-ink-500 px-3 py-2;
+  }
+
+  .label {
+    @apply font-mono text-2xs uppercase tracking-[0.14em] text-fg-faint;
+  }
+
+  .field {
+    @apply w-full border border-ink-400 bg-ink-900 px-2.5 py-1.5 font-mono text-xs text-fg
+           outline-none transition-colors placeholder:text-fg-faint focus:border-accent/60;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 border px-3 py-1.5
+           font-mono text-2xs uppercase tracking-[0.1em] transition-colors disabled:cursor-not-allowed
+           disabled:opacity-40;
+  }
+
+  .btn-primary {
+    @apply btn border-accent bg-accent text-ink-900 hover:bg-accent-dim hover:border-accent-dim;
+  }
+
+  .btn-ghost {
+    @apply btn border-ink-400 bg-transparent text-fg-dim hover:border-ink-400 hover:text-fg;
+  }
+
+  .tab {
+    @apply border-b-2 px-3 py-2 font-mono text-2xs uppercase tracking-[0.1em] transition-colors;
+  }
+}
+
+/* Trace lines wrap rather than scroll horizontally, but preserve indentation. */
+.trace-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
