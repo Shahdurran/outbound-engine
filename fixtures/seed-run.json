@@ -1,0 +1,720 @@
+{
+  "runId": "run_13a6321a42af474b",
+  "tables": {
+    "runs": [
+      {
+        "id": "run_13a6321a42af474b",
+        "domain": "acmedental.com",
+        "icp": "Owner-run local service businesses that depend on inbound and have no in-house marketing team",
+        "status": "complete",
+        "mode": "replay",
+        "model": "claude-opus-5",
+        "created_at": 1788361393672,
+        "completed_at": 1788361434005,
+        "duration_ms": 40333,
+        "input_tokens": 70240,
+        "output_tokens": 9846,
+        "cache_read_tokens": 15400,
+        "cost_usd": 0.6050500000000001,
+        "score": 76,
+        "tier": "A",
+        "error": null
+      }
+    ],
+    "agent_steps": [
+      {
+        "id": 1,
+        "run_id": "run_13a6321a42af474b",
+        "agent": "RecceAgent",
+        "step_index": 0,
+        "status": "done",
+        "started_at": 1788361393676,
+        "duration_ms": 7535,
+        "attempts": 1,
+        "input_tokens": 15440,
+        "output_tokens": 1486,
+        "cost_usd": 0.11645,
+        "output_json": "{\"domain\":\"acmedental.com\",\"companyName\":\"Acme Dental\",\"positioning\":\"A long-established family and cosmetic dental practice in Southeast Portland, selling calm and unhurried care rather than price or speed.\",\"services\":[{\"name\":\"General dentistry\",\"description\":\"Cleanings, exams, digital x-rays, fillings and extractions.\"},{\"name\":\"Cosmetic dentistry\",\"description\":\"Whitening, porcelain veneers and cosmetic bonding.\"},{\"name\":\"Invisalign\",\"description\":\"Clear aligner treatment planned in practice, no indicative pricing given.\"},{\"name\":\"Dental implants\",\"description\":\"Single implants and implant supported bridges, placed and restored in house.\"},{\"name\":\"Emergency care\",\"description\":\"Same day appointments, restricted to existing patients.\"}],\"targetMarket\":\"Families in Southeast Portland, with a strong lean toward long-term retained patients rather than new high-value cosmetic cases.\",\"pricingSignals\":{\"disclosed\":false,\"notes\":\"No price, range or starting-from figure appears anywhere on the site. Payment is deferred to a conversation at the first visit, which pushes the cost question off the site entirely.\",\"evidence\":[{\"source\":\"https://acmedental.com/about\",\"excerpt\":\"We are in network with most major PPO plans and can discuss payment options at your first visit.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Book a consultation to find out whether you are a candidate.\"}]},\"techStack\":[\"WordPress\",\"Google Tag Manager\"],\"ctaDensity\":{\"label\":\"Calls to action across the four pages read\",\"basis\":\"derived\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"fetch_page signals: ctaCount 2 on the homepage, both below the fold, reading 'See all services' and 'Request an appointment'.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"fetch_page signals: ctaCount 1, a single 'Request an appointment' link at the foot of the page.\"}],\"kind\":\"exact\",\"value\":4},\"proofElements\":[\"A prose claim of being highly rated, with no rating, count or quoted review anywhere on the site\"],\"pagesRead\":[{\"url\":\"https://acmedental.com/\",\"title\":\"Acme Dental Portland | Family and Cosmetic Dentistry\"},{\"url\":\"https://acmedental.com/services\",\"title\":\"Services | Acme Dental Portland\"},{\"url\":\"https://acmedental.com/about\",\"title\":\"About | Acme Dental Portland\"},{\"url\":\"https://acmedental.com/contact\",\"title\":\"Contact | Acme Dental Portland\"}],\"summary\":\"Acme Dental is a stable, owner-run family practice that has been trading since 2004 and reads like it. The site is a brochure: it explains what the practice does, asks the visitor to request a callback, and answers none of the questions a patient actually has before choosing a dentist. There is no pricing, no visible proof, and the only conversion path is a nine-field form promising a call back within two business days. The clinical range is wider than the marketing suggests, with Invisalign and implants both offered but neither given a page that could rank.\"}",
+        "error": null
+      },
+      {
+        "id": 2,
+        "run_id": "run_13a6321a42af474b",
+        "agent": "CompetitorMapAgent",
+        "step_index": 1,
+        "status": "done",
+        "started_at": 1788361401211,
+        "duration_ms": 8126,
+        "attempts": 1,
+        "input_tokens": 14680,
+        "output_tokens": 1340,
+        "cost_usd": 0.1087,
+        "output_json": "{\"competitors\":[{\"domain\":\"pearlbrightdental.com\",\"name\":\"Pearlbright Dental\",\"positioningOneLiner\":\"Portland Invisalign and cosmetic dentistry with prices published up front.\",\"whyTheyCompete\":\"Chases the same Portland cosmetic and Invisalign cases Acme offers but never markets, and removes the price objection Acme leaves unanswered.\",\"overlapType\":\"direct\",\"evidence\":[{\"source\":\"search:invisalign portland cost\",\"excerpt\":\"Pearlbright Dental - Invisalign in Portland from $3,400. See exactly what treatment costs before you book.\"},{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Straighter teeth, priced up front. Invisalign in Portland from $3,400.\"}]},{\"domain\":\"portlandsmileco.com\",\"name\":\"Portland Smile Co\",\"positioningOneLiner\":\"Seven-day emergency dentist with same day appointments and quoted prices.\",\"whyTheyCompete\":\"Takes the urgent, high-intent demand outright. Acme offers emergency care but only to existing patients, so every emergency searcher is a patient Acme cannot capture.\",\"overlapType\":\"direct\",\"evidence\":[{\"source\":\"search:emergency dentist portland\",\"excerpt\":\"Portland Smile Co - Emergency dentist, open seven days. Same day emergency appointments across Portland.\"},{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"Emergency exam from $89. Treatment quoted before we start.\"}]},{\"domain\":\"riversidefamilydental.com\",\"name\":\"Riverside Family Dental\",\"positioningOneLiner\":\"Family dentistry with a dedicated implant practice and a comparison-led blog.\",\"whyTheyCompete\":\"The closest match on general family dentistry, and additionally publishes the implant comparison content Acme has none of.\",\"overlapType\":\"direct\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Implant guides. Dental implants vs bridges. What implants cost in Oregon.\"}]},{\"domain\":\"in-house-deferral\",\"name\":\"Doing nothing for another year\",\"positioningOneLiner\":\"The patient who knows they need work and keeps putting it off.\",\"whyTheyCompete\":\"For elective cosmetic and implant work, the real competitor is deferral. A site that will not discuss cost makes deferral the path of least resistance.\",\"overlapType\":\"substitute\",\"evidence\":[{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Book a consultation to find out whether you are a candidate.\"}]}],\"marketNotes\":\"Portland dentistry is fragmented and local, with no single dominant brand. The competitive edge is being won on transparency rather than clinical claims: both of the strongest competitors publish prices, and both convert on urgency or certainty. Acme competes on relationship, which retains existing patients well but generates no acquisition. Nobody in this set is large enough to outspend anyone, so the market is decided by which practice answers the buyer's question first.\"}",
+        "error": null
+      },
+      {
+        "id": 3,
+        "run_id": "run_13a6321a42af474b",
+        "agent": "OrganicVisibilityAgent",
+        "step_index": 2,
+        "status": "done",
+        "started_at": 1788361409338,
+        "duration_ms": 8514,
+        "attempts": 1,
+        "input_tokens": 13540,
+        "output_tokens": 2300,
+        "cost_usd": 0.1264,
+        "output_json": "{\"entries\":[{\"domain\":\"acmedental.com\",\"isProspect\":true,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"medium\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"Navigation exposes exactly four pages: home, services, about, contact. No blog, no location pages, no per-treatment pages.\"},{\"source\":\"search:site:acmedental.com\",\"excerpt\":\"Brand-name searches surface the homepage and little else beneath it.\"}],\"kind\":\"range\",\"low\":4,\"high\":12,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"estimated\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"General dentistry, cosmetic dentistry, Invisalign, dental implants and emergency care all appear as short sections of a single page.\"}],\"kind\":\"qualitative\",\"value\":\"Very thin. Five treatments are named on one shared services page, so no treatment has a page of its own that could rank for it.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"medium\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"No blog link in the navigation and no dated content on any page read.\"}],\"kind\":\"qualitative\",\"value\":\"No dated content of any kind. Nothing indicates the site has changed since it was built.\"},\"rankingTrajectory\":{\"direction\":\"flat\",\"confidence\":\"low\",\"rationale\":\"A four-page brochure site with no publishing cadence has nothing that would cause movement in either direction. Flat is the expected state, but without historical data this is inference from site structure, not measurement.\",\"evidence\":[{\"source\":\"search:acme dental portland\",\"excerpt\":\"The brand query returns the homepage. Non-brand service queries did not surface the domain at all.\"}]}},{\"domain\":\"pearlbrightdental.com\",\"isProspect\":false,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"A guides section is linked from the main navigation alongside dedicated Invisalign and pricing pages.\"}],\"kind\":\"range\",\"low\":40,\"high\":120,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"derived\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"How much does Invisalign cost in Portland. Invisalign vs braces for adults. What happens at an Invisalign consultation. Financing your treatment.\"}],\"kind\":\"qualitative\",\"value\":\"Strong on one vertical. Cost, comparison, consultation and financing questions for Invisalign each have their own guide.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Popular guides section is linked from the homepage.\"}],\"kind\":\"qualitative\",\"value\":\"Actively maintained, though no post dates were visible on the pages read.\"},\"rankingTrajectory\":{\"direction\":\"rising\",\"confidence\":\"medium\",\"rationale\":\"They hold the top result for the commercial Invisalign cost query in this city and have built a cluster around it. That is a defensible position that tends to compound.\",\"evidence\":[{\"source\":\"search:invisalign portland cost\",\"excerpt\":\"Pearlbright Dental is the leading result, with its pricing page also surfacing.\"}]}},{\"domain\":\"portlandsmileco.com\",\"isProspect\":false,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"Navigation exposes emergency, pricing and booking pages.\"}],\"kind\":\"range\",\"low\":15,\"high\":50,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"derived\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"Toothache, broken tooth or lost crown. Same day emergency appointments across Portland.\"}],\"kind\":\"qualitative\",\"value\":\"Narrow and deliberate. Everything points at urgent, same-day demand.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"No blog or dated content in the navigation.\"}],\"kind\":\"qualitative\",\"value\":\"Unknown. No dated content was visible.\"},\"rankingTrajectory\":{\"direction\":\"unknown\",\"confidence\":\"low\",\"rationale\":\"They rank for the emergency query today, but nothing observable indicates whether that position is new, stable or slipping. Reporting a direction here would be a guess.\",\"evidence\":[{\"source\":\"search:emergency dentist portland\",\"excerpt\":\"Portland Smile Co appears prominently for the emergency query.\"}]}},{\"domain\":\"riversidefamilydental.com\",\"isProspect\":false,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"A blog and dedicated implants and family care sections are linked.\"}],\"kind\":\"range\",\"low\":20,\"high\":80,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"derived\",\"confidence\":\"medium\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Dental implants vs bridges. What implants cost in Oregon. Recovery after implant surgery.\"}],\"kind\":\"qualitative\",\"value\":\"Moderate, concentrated on implant comparison and cost questions.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Blog linked from the main navigation.\"}],\"kind\":\"qualitative\",\"value\":\"A maintained blog exists, cadence unknown.\"},\"rankingTrajectory\":{\"direction\":\"flat\",\"confidence\":\"low\",\"rationale\":\"Established family practice with steady comparison content and no signal of a recent push in either direction.\",\"evidence\":[{\"source\":\"search:dental implants portland cost\",\"excerpt\":\"Riverside surfaces alongside Pearlbright for implant cost comparison queries.\"}]}}],\"methodology\":\"Every figure here comes from two sources only: the navigation and body copy of pages actually fetched, and the results of the searches listed in the evidence. Page counts are bands inferred from how many distinct sections a site links to, never a crawl and never an index count. Topical coverage is counted from named topics visible on the pages read. Trajectory is inferred from whether a domain holds a commercial query today plus whether it has a content cluster supporting that position.\",\"caveats\":[\"No analytics, Search Console or third-party rank tracking was available, so no traffic figure appears anywhere in this report and none should be inferred from it.\",\"Page count bands are wide on purpose. A site with a large unlinked archive would fall outside them.\",\"Trajectory for portlandsmileco.com is reported as unknown rather than estimated, because a single current ranking says nothing about direction.\",\"All searches were run once, unpersonalised. Local results vary by searcher location and device.\"]}",
+        "error": null
+      },
+      {
+        "id": 4,
+        "run_id": "run_13a6321a42af474b",
+        "agent": "LeakageAgent",
+        "step_index": 3,
+        "status": "done",
+        "started_at": 1788361417853,
+        "duration_ms": 8122,
+        "attempts": 1,
+        "input_tokens": 15160,
+        "output_tokens": 2500,
+        "cost_usd": 0.13960000000000003,
+        "output_json": "{\"conversionLeakage\":[{\"title\":\"Contact form asks for nine fields before a callback\",\"detail\":\"The only conversion path on the site is a form requiring first name, last name, email, phone, date of birth, insurance provider, insurance member ID, existing patient status and reason for visit. Insurance details are being collected before the practice has agreed to see the patient, and date of birth before any clinical relationship exists. Each additional required field costs completions, and this form has nine of them guarding a callback that then takes two business days.\",\"evidence\":[{\"source\":\"https://acmedental.com/contact\",\"excerpt\":\"fetch_page signals: formFieldCount 9, all required. Fields include Date of birth, Insurance provider and Insurance member ID.\"},{\"source\":\"https://acmedental.com/contact\",\"excerpt\":\"Fill in the form and a member of our team will call you back within two business days.\"}],\"impact\":\"high\",\"fix\":\"Cut the form to name, phone and reason for visit. Collect insurance and date of birth on the confirmation call, where a person is already talking to the patient.\",\"area\":\"form\"},{\"title\":\"No pricing anywhere on the site\",\"detail\":\"Cost is the question every prospective patient has, and the site answers it nowhere. Both leading competitors publish figures, one from $3,400 for Invisalign and one from $89 for an emergency exam. A visitor comparing three practices gets an answer from two of them and a request for their insurance ID from the third.\",\"evidence\":[{\"source\":\"https://acmedental.com/about\",\"excerpt\":\"We are in network with most major PPO plans and can discuss payment options at your first visit.\"},{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Invisalign in Portland from $3,400.\"}],\"impact\":\"high\",\"fix\":\"Publish a starting-from figure for the five named treatments. A range with an explanation of what moves it beats silence and costs nothing clinically.\",\"area\":\"pricing\"},{\"title\":\"No booking CTA above the fold on the homepage\",\"detail\":\"Both homepage calls to action sit below several paragraphs of practice history. A visitor arriving ready to book has to scroll past 2004 to find out how.\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"fetch_page signals: ctaCount 2, both appearing after the practice history and services prose. The first is 'See all services'.\"}],\"impact\":\"medium\",\"fix\":\"Put a single 'Request an appointment' button in the header, visible on load and on every page.\",\"area\":\"cta\"},{\"title\":\"Patient reviews are mentioned but never shown\",\"detail\":\"The homepage claims the practice is rated highly by the families it looks after, and then shows no rating, no review count and no quoted patient. The claim is doing none of the work a real review would do, while a competitor states 4.9 from 612 reviews on its homepage.\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"We are rated highly by the families we look after and many of them have been with us for a decade.\"},{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Rated 4.9 from 612 reviews.\"}],\"impact\":\"medium\",\"fix\":\"Pull the existing Google rating and count onto the homepage and the contact page, with three quoted reviews next to the form.\",\"area\":\"proof\"}],\"competitorLeakage\":[{\"title\":\"Invisalign cost questions are owned by Pearlbright\",\"detail\":\"Acme provides Invisalign and gives it two sentences on a shared services page, ending in an invitation to book a consultation to find out whether you are a candidate. Pearlbright has built a guide cluster around the cost question and leads with a figure. Every Portland adult searching what Invisalign costs is being answered by the competitor, and the case is effectively decided before Acme is considered.\",\"evidence\":[{\"source\":\"search:invisalign portland cost\",\"excerpt\":\"Pearlbright Dental leads the results with 'Invisalign in Portland from $3,400', with its pricing page also surfacing.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Clear aligner treatment planned in practice. Treatment length varies by case. Book a consultation to find out whether you are a candidate.\"}],\"impact\":\"high\",\"fix\":\"Publish one page answering what Invisalign costs at this practice, with a range and what moves it, then link it from the services page.\",\"queryTheme\":\"Invisalign cost and comparison in Portland\",\"ownedBy\":[\"pearlbrightdental.com\"]},{\"title\":\"Emergency dentist searches go to Portland Smile Co\",\"detail\":\"Acme offers same day emergency appointments but restricts them to existing patients, and says so only in a single line on the services page. Portland Smile Co has built its entire site on that demand and quotes a price for the visit. This is the highest-intent search in the category and Acme is structurally excluded from it by its own policy rather than by capability.\",\"evidence\":[{\"source\":\"search:emergency dentist portland\",\"excerpt\":\"Portland Smile Co ranks prominently with 'Emergency dentist, open seven days' and 'Emergency exam from $89'.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Same day appointments for existing patients experiencing pain.\"}],\"impact\":\"high\",\"fix\":\"Decide whether emergency slots can be opened to new patients. If they can, build a page for it; if they cannot, stop competing there and put the effort into Invisalign instead.\",\"queryTheme\":\"Emergency and same-day dental care in Portland\",\"ownedBy\":[\"portlandsmileco.com\"]},{\"title\":\"No content for implant comparison queries\",\"detail\":\"Acme places and restores implants in house, which is a genuine differentiator, and has no page saying so. Riverside and Pearlbright both publish comparison and cost content for implants. The most profitable treatment on the list has the least marketing behind it.\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Implant guides. Dental implants vs bridges. What implants cost in Oregon. Recovery after implant surgery.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Single implants and implant supported bridges, placed and restored in house.\"}],\"impact\":\"medium\",\"fix\":\"Write one implants page covering cost range, implants versus bridges, and the fact that placement and restoration happen in one practice.\",\"queryTheme\":\"Dental implant cost and comparison in Oregon\",\"ownedBy\":[\"riversidefamilydental.com\",\"pearlbrightdental.com\"]}]}",
+        "error": null
+      },
+      {
+        "id": 5,
+        "run_id": "run_13a6321a42af474b",
+        "agent": "ScoringAgent",
+        "step_index": 4,
+        "status": "done",
+        "started_at": 1788361425976,
+        "duration_ms": 3413,
+        "attempts": 1,
+        "input_tokens": 5240,
+        "output_tokens": 880,
+        "cost_usd": 0.0488,
+        "output_json": "{\"components\":{\"fit\":{\"score\":82,\"rationale\":\"An owner-run service business with a considered purchase, entirely dependent on inbound, and no in-house marketing function. That is squarely the profile. It loses points only because the practice appears content with its retained base, which can make it a slower sale than the site suggests.\"},\"painSeverity\":{\"score\":78,\"rationale\":\"Two high-impact conversion findings and two high-impact competitor findings, and they compound: the treatments with no content are the same ones with no price, so the most profitable work is invisible twice over. Not existential, since the retained base keeps the practice full, but every new patient is being lost at a measurable point.\"},\"timingSignals\":{\"score\":55,\"rationale\":\"Genuinely mixed. A competitor has established a cost-led position in Invisalign that gets harder to displace every month, which is a real clock. Against that, nothing indicates Acme is currently feeling pain: no hiring signal, no site rebuild, no new service push. The urgency is real but it is ours, not theirs, and that has to be earned in the conversation rather than asserted.\"},\"reachability\":{\"score\":88,\"rationale\":\"A named owner, Dr. Helen Marsh, a nine-person practice, and a direct phone number on every page. The decision maker is one person and there is no procurement layer. About as reachable as B2B gets.\"}},\"rationale\":\"This is a strong prospect with an honest caveat. Acme Dental fits the profile almost exactly: a small owner-run practice that depends on inbound, has no marketing function, and is losing new patients at points that can be pinpointed and fixed. The findings are specific enough to open a conversation with something they cannot dismiss, and the decision maker is a named individual reachable by phone. The score is held out of the high eighties by timing rather than fit. Nothing on the site suggests the practice currently feels a problem, and a full retained patient list is exactly the condition under which owners defer marketing decisions. The Invisalign position a competitor has built is the strongest available reason to act now, so it should lead the sequence, and the argument for urgency has to be made rather than assumed.\",\"confidence\":\"high\"}",
+        "error": null
+      },
+      {
+        "id": 6,
+        "run_id": "run_13a6321a42af474b",
+        "agent": "CopyAgent",
+        "step_index": 5,
+        "status": "done",
+        "started_at": 1788361429391,
+        "duration_ms": 4613,
+        "attempts": 1,
+        "input_tokens": 6180,
+        "output_tokens": 1340,
+        "cost_usd": 0.0651,
+        "output_json": "{\"touches\":[{\"day\":0,\"channel\":\"email\",\"subject\":\"Your quote form asks for nine things\",\"body\":\"Dr. Marsh, your appointment request form asks for nine required fields, including date of birth and insurance member ID, before anyone at the practice has spoken to the patient. Then the callback takes two business days. Most practices we look at lose the majority of form starts somewhere in that stretch. The fix is small. Ask for name, phone and reason for visit, and collect the insurance details on the call you were going to make anyway. I mapped four of these on your site and two more where competitors are taking searches you could win. Worth twenty minutes to walk you through it?\",\"referencedFinding\":\"Contact form asks for nine fields before a callback\"},{\"day\":3,\"channel\":\"email\",\"subject\":\"Pearlbright owns Invisalign cost in PDX\",\"body\":\"Following the note about your form. Search Invisalign cost in Portland and Pearlbright answers it, from $3,400, with four guides built around the question. Your services page offers Invisalign in two sentences and asks people to book a consultation to find out if they qualify. So the patient comparing three practices gets a number from them and a form from you, and the case is usually decided before you are in it. You already do the treatment. One page with a range and what moves it would put you back in the comparison. Free to talk Thursday?\",\"referencedFinding\":\"Invisalign cost questions are owned by Pearlbright\"},{\"day\":7,\"channel\":\"linkedin\",\"body\":\"Dr. Marsh, I sent two notes about Acme Dental's site. Short version: your five treatments have no price anywhere, and both practices you compete with publish theirs. Patients are choosing before they call you. I put together a breakdown of where that costs you and what to change first. Want me to send it over?\",\"referencedFinding\":\"No pricing anywhere on the site\"},{\"day\":12,\"channel\":\"email\",\"subject\":\"Closing the loop on Acme Dental\",\"body\":\"Last one from me, Dr. Marsh. The thing I would still look at is emergency care. You offer same day appointments but only to existing patients, and Portland Smile Co has built a whole practice on that search. It is the highest intent query in your category and you are out of it by policy rather than capability. Either open those slots to new patients and build a page for it, or drop it and put the effort into Invisalign. Both are defensible. Doing neither is the expensive option. If this is not a priority right now, no problem, and I will leave you to it.\",\"referencedFinding\":\"Emergency dentist searches go to Portland Smile Co\"}],\"sequenceNotes\":\"Opens with the nine-field form because it is the most concrete and least arguable finding, and it costs them money today. Day 3 escalates from their own site to the competitive threat, which is the strongest argument for acting now rather than next year. The LinkedIn touch compresses both into the pricing gap, since that is the one a practice owner can verify in ten seconds. The breakup raises emergency care, deliberately held back, and frames it as a decision rather than a failure. A reply to day 0 means they will act on the site itself; a reply to day 3 or day 12 means the competitive threat landed and the conversation should be about acquisition, not conversion.\"}",
+        "error": null
+      }
+    ],
+    "trace_events": [
+      {
+        "id": 1,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 0,
+        "type": "run_start",
+        "ts": 1788361393672,
+        "payload": "{\"type\":\"run_start\",\"runId\":\"run_13a6321a42af474b\",\"domain\":\"acmedental.com\",\"icp\":\"Owner-run local service businesses that depend on inbound and have no in-house marketing team\",\"mode\":\"replay\",\"model\":\"claude-opus-5\",\"ts\":1788361393672}"
+      },
+      {
+        "id": 2,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 1,
+        "type": "agent_queued",
+        "ts": 1788361393673,
+        "payload": "{\"type\":\"agent_queued\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"ts\":1788361393673}"
+      },
+      {
+        "id": 3,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 2,
+        "type": "agent_queued",
+        "ts": 1788361393673,
+        "payload": "{\"type\":\"agent_queued\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"ts\":1788361393673}"
+      },
+      {
+        "id": 4,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 3,
+        "type": "agent_queued",
+        "ts": 1788361393673,
+        "payload": "{\"type\":\"agent_queued\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"ts\":1788361393673}"
+      },
+      {
+        "id": 5,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 4,
+        "type": "agent_queued",
+        "ts": 1788361393673,
+        "payload": "{\"type\":\"agent_queued\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"ts\":1788361393673}"
+      },
+      {
+        "id": 6,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 5,
+        "type": "agent_queued",
+        "ts": 1788361393673,
+        "payload": "{\"type\":\"agent_queued\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"ScoringAgent\",\"ts\":1788361393673}"
+      },
+      {
+        "id": 7,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 6,
+        "type": "agent_queued",
+        "ts": 1788361393673,
+        "payload": "{\"type\":\"agent_queued\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CopyAgent\",\"ts\":1788361393673}"
+      },
+      {
+        "id": 8,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 7,
+        "type": "agent_start",
+        "ts": 1788361393676,
+        "payload": "{\"type\":\"agent_start\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"ts\":1788361393676}"
+      },
+      {
+        "id": 9,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 8,
+        "type": "model_call",
+        "ts": 1788361393676,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"attempt\":1,\"ts\":1788361393676}"
+      },
+      {
+        "id": 10,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 9,
+        "type": "tool_call",
+        "ts": 1788361395085,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_list_site_pages_0_u2xhlm\",\"tool\":\"list_site_pages\",\"args\":{\"domain\":\"acmedental.com\",\"limit\":15},\"ts\":1788361395085}"
+      },
+      {
+        "id": 11,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 10,
+        "type": "tool_result",
+        "ts": 1788361395087,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_list_site_pages_0_u2xhlm\",\"tool\":\"list_site_pages\",\"ok\":true,\"summary\":\"4 internal links on https://acmedental.com/\",\"cached\":true,\"durationMs\":1,\"ts\":1788361395087}"
+      },
+      {
+        "id": 12,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 11,
+        "type": "model_call",
+        "ts": 1788361395087,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"attempt\":1,\"ts\":1788361395087}"
+      },
+      {
+        "id": 13,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 12,
+        "type": "tool_call",
+        "ts": 1788361396998,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_0_ntln96\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://acmedental.com\"},\"ts\":1788361396998}"
+      },
+      {
+        "id": 14,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 13,
+        "type": "tool_call",
+        "ts": 1788361396999,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_1_vuj51i\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://acmedental.com/services\"},\"ts\":1788361396999}"
+      },
+      {
+        "id": 15,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 14,
+        "type": "tool_call",
+        "ts": 1788361396999,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_2_dptqo8\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://acmedental.com/about\"},\"ts\":1788361396999}"
+      },
+      {
+        "id": 16,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 15,
+        "type": "tool_call",
+        "ts": 1788361396999,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_3_g6gbkr\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://acmedental.com/contact\"},\"ts\":1788361396999}"
+      },
+      {
+        "id": 17,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 16,
+        "type": "tool_result",
+        "ts": 1788361397000,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_0_ntln96\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://acmedental.com/ 200 111w 2 CTAs\",\"cached\":true,\"durationMs\":2,\"ts\":1788361397000}"
+      },
+      {
+        "id": 18,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 17,
+        "type": "tool_result",
+        "ts": 1788361397000,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_1_vuj51i\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://acmedental.com/services 200 71w 2 CTAs\",\"cached\":true,\"durationMs\":1,\"ts\":1788361397000}"
+      },
+      {
+        "id": 19,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 18,
+        "type": "tool_result",
+        "ts": 1788361397000,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_2_dptqo8\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://acmedental.com/about 200 54w 1 CTAs\",\"cached\":true,\"durationMs\":1,\"ts\":1788361397000}"
+      },
+      {
+        "id": 20,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 19,
+        "type": "tool_result",
+        "ts": 1788361397000,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"callId\":\"replay_fetch_page_3_g6gbkr\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://acmedental.com/contact 200 54w 2 CTAs\",\"cached\":true,\"durationMs\":1,\"ts\":1788361397000}"
+      },
+      {
+        "id": 21,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 20,
+        "type": "model_call",
+        "ts": 1788361397000,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"attempt\":1,\"ts\":1788361397000}"
+      },
+      {
+        "id": 22,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 21,
+        "type": "agent_done",
+        "ts": 1788361401211,
+        "payload": "{\"type\":\"agent_done\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"RecceAgent\",\"durationMs\":7535,\"usage\":{\"inputTokens\":15440,\"outputTokens\":1486,\"cacheReadTokens\":4200,\"cacheCreationTokens\":0,\"costUsd\":0.11645},\"output\":{\"domain\":\"acmedental.com\",\"companyName\":\"Acme Dental\",\"positioning\":\"A long-established family and cosmetic dental practice in Southeast Portland, selling calm and unhurried care rather than price or speed.\",\"services\":[{\"name\":\"General dentistry\",\"description\":\"Cleanings, exams, digital x-rays, fillings and extractions.\"},{\"name\":\"Cosmetic dentistry\",\"description\":\"Whitening, porcelain veneers and cosmetic bonding.\"},{\"name\":\"Invisalign\",\"description\":\"Clear aligner treatment planned in practice, no indicative pricing given.\"},{\"name\":\"Dental implants\",\"description\":\"Single implants and implant supported bridges, placed and restored in house.\"},{\"name\":\"Emergency care\",\"description\":\"Same day appointments, restricted to existing patients.\"}],\"targetMarket\":\"Families in Southeast Portland, with a strong lean toward long-term retained patients rather than new high-value cosmetic cases.\",\"pricingSignals\":{\"disclosed\":false,\"notes\":\"No price, range or starting-from figure appears anywhere on the site. Payment is deferred to a conversation at the first visit, which pushes the cost question off the site entirely.\",\"evidence\":[{\"source\":\"https://acmedental.com/about\",\"excerpt\":\"We are in network with most major PPO plans and can discuss payment options at your first visit.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Book a consultation to find out whether you are a candidate.\"}]},\"techStack\":[\"WordPress\",\"Google Tag Manager\"],\"ctaDensity\":{\"label\":\"Calls to action across the four pages read\",\"basis\":\"derived\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"fetch_page signals: ctaCount 2 on the homepage, both below the fold, reading 'See all services' and 'Request an appointment'.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"fetch_page signals: ctaCount 1, a single 'Request an appointment' link at the foot of the page.\"}],\"kind\":\"exact\",\"value\":4},\"proofElements\":[\"A prose claim of being highly rated, with no rating, count or quoted review anywhere on the site\"],\"pagesRead\":[{\"url\":\"https://acmedental.com/\",\"title\":\"Acme Dental Portland | Family and Cosmetic Dentistry\"},{\"url\":\"https://acmedental.com/services\",\"title\":\"Services | Acme Dental Portland\"},{\"url\":\"https://acmedental.com/about\",\"title\":\"About | Acme Dental Portland\"},{\"url\":\"https://acmedental.com/contact\",\"title\":\"Contact | Acme Dental Portland\"}],\"summary\":\"Acme Dental is a stable, owner-run family practice that has been trading since 2004 and reads like it. The site is a brochure: it explains what the practice does, asks the visitor to request a callback, and answers none of the questions a patient actually has before choosing a dentist. There is no pricing, no visible proof, and the only conversion path is a nine-field form promising a call back within two business days. The clinical range is wider than the marketing suggests, with Invisalign and implants both offered but neither given a page that could rank.\"},\"ts\":1788361401211}"
+      },
+      {
+        "id": 23,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 22,
+        "type": "agent_start",
+        "ts": 1788361401211,
+        "payload": "{\"type\":\"agent_start\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"ts\":1788361401211}"
+      },
+      {
+        "id": 24,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 23,
+        "type": "model_call",
+        "ts": 1788361401211,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"attempt\":1,\"ts\":1788361401211}"
+      },
+      {
+        "id": 25,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 24,
+        "type": "tool_call",
+        "ts": 1788361403822,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"srvtoolu_replay_0\",\"tool\":\"web_search\",\"args\":{\"query\":\"invisalign portland cost\"},\"ts\":1788361403822}"
+      },
+      {
+        "id": 26,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 25,
+        "type": "tool_result",
+        "ts": 1788361403822,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"srvtoolu_replay_0\",\"tool\":\"web_search\",\"ok\":true,\"summary\":\"2 results\",\"cached\":false,\"durationMs\":0,\"ts\":1788361403822}"
+      },
+      {
+        "id": 27,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 26,
+        "type": "tool_call",
+        "ts": 1788361403822,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"srvtoolu_replay_1\",\"tool\":\"web_search\",\"args\":{\"query\":\"emergency dentist portland same day\"},\"ts\":1788361403822}"
+      },
+      {
+        "id": 28,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 27,
+        "type": "tool_result",
+        "ts": 1788361403822,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"srvtoolu_replay_1\",\"tool\":\"web_search\",\"ok\":true,\"summary\":\"1 results\",\"cached\":false,\"durationMs\":0,\"ts\":1788361403822}"
+      },
+      {
+        "id": 29,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 28,
+        "type": "tool_call",
+        "ts": 1788361403823,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"srvtoolu_replay_2\",\"tool\":\"web_search\",\"args\":{\"query\":\"family dentist southeast portland implants\"},\"ts\":1788361403823}"
+      },
+      {
+        "id": 30,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 29,
+        "type": "tool_result",
+        "ts": 1788361403823,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"srvtoolu_replay_2\",\"tool\":\"web_search\",\"ok\":true,\"summary\":\"1 results\",\"cached\":false,\"durationMs\":0,\"ts\":1788361403823}"
+      },
+      {
+        "id": 31,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 30,
+        "type": "model_call",
+        "ts": 1788361403823,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"attempt\":1,\"ts\":1788361403823}"
+      },
+      {
+        "id": 32,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 31,
+        "type": "tool_call",
+        "ts": 1788361405530,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"replay_fetch_page_0_ktj8iq\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://pearlbrightdental.com\"},\"ts\":1788361405530}"
+      },
+      {
+        "id": 33,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 32,
+        "type": "tool_call",
+        "ts": 1788361405530,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"replay_fetch_page_1_4eizpu\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://portlandsmileco.com\"},\"ts\":1788361405530}"
+      },
+      {
+        "id": 34,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 33,
+        "type": "tool_call",
+        "ts": 1788361405530,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"replay_fetch_page_2_cn34dl\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://riversidefamilydental.com\"},\"ts\":1788361405530}"
+      },
+      {
+        "id": 35,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 34,
+        "type": "tool_result",
+        "ts": 1788361405531,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"replay_fetch_page_0_ktj8iq\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://pearlbrightdental.com/ 200 61w 2 CTAs\",\"cached\":true,\"durationMs\":1,\"ts\":1788361405531}"
+      },
+      {
+        "id": 36,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 35,
+        "type": "tool_result",
+        "ts": 1788361405531,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"replay_fetch_page_1_4eizpu\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://portlandsmileco.com/ 200 48w 2 CTAs\",\"cached\":true,\"durationMs\":1,\"ts\":1788361405531}"
+      },
+      {
+        "id": 37,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 36,
+        "type": "tool_result",
+        "ts": 1788361405531,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"callId\":\"replay_fetch_page_2_cn34dl\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://riversidefamilydental.com/ 200 34w 2 CTAs\",\"cached\":true,\"durationMs\":1,\"ts\":1788361405531}"
+      },
+      {
+        "id": 38,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 37,
+        "type": "model_call",
+        "ts": 1788361405531,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"attempt\":1,\"ts\":1788361405531}"
+      },
+      {
+        "id": 39,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 38,
+        "type": "agent_done",
+        "ts": 1788361409338,
+        "payload": "{\"type\":\"agent_done\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CompetitorMapAgent\",\"durationMs\":8126,\"usage\":{\"inputTokens\":14680,\"outputTokens\":1340,\"cacheReadTokens\":3600,\"cacheCreationTokens\":0,\"costUsd\":0.1087},\"output\":{\"competitors\":[{\"domain\":\"pearlbrightdental.com\",\"name\":\"Pearlbright Dental\",\"positioningOneLiner\":\"Portland Invisalign and cosmetic dentistry with prices published up front.\",\"whyTheyCompete\":\"Chases the same Portland cosmetic and Invisalign cases Acme offers but never markets, and removes the price objection Acme leaves unanswered.\",\"overlapType\":\"direct\",\"evidence\":[{\"source\":\"search:invisalign portland cost\",\"excerpt\":\"Pearlbright Dental - Invisalign in Portland from $3,400. See exactly what treatment costs before you book.\"},{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Straighter teeth, priced up front. Invisalign in Portland from $3,400.\"}]},{\"domain\":\"portlandsmileco.com\",\"name\":\"Portland Smile Co\",\"positioningOneLiner\":\"Seven-day emergency dentist with same day appointments and quoted prices.\",\"whyTheyCompete\":\"Takes the urgent, high-intent demand outright. Acme offers emergency care but only to existing patients, so every emergency searcher is a patient Acme cannot capture.\",\"overlapType\":\"direct\",\"evidence\":[{\"source\":\"search:emergency dentist portland\",\"excerpt\":\"Portland Smile Co - Emergency dentist, open seven days. Same day emergency appointments across Portland.\"},{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"Emergency exam from $89. Treatment quoted before we start.\"}]},{\"domain\":\"riversidefamilydental.com\",\"name\":\"Riverside Family Dental\",\"positioningOneLiner\":\"Family dentistry with a dedicated implant practice and a comparison-led blog.\",\"whyTheyCompete\":\"The closest match on general family dentistry, and additionally publishes the implant comparison content Acme has none of.\",\"overlapType\":\"direct\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Implant guides. Dental implants vs bridges. What implants cost in Oregon.\"}]},{\"domain\":\"in-house-deferral\",\"name\":\"Doing nothing for another year\",\"positioningOneLiner\":\"The patient who knows they need work and keeps putting it off.\",\"whyTheyCompete\":\"For elective cosmetic and implant work, the real competitor is deferral. A site that will not discuss cost makes deferral the path of least resistance.\",\"overlapType\":\"substitute\",\"evidence\":[{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Book a consultation to find out whether you are a candidate.\"}]}],\"marketNotes\":\"Portland dentistry is fragmented and local, with no single dominant brand. The competitive edge is being won on transparency rather than clinical claims: both of the strongest competitors publish prices, and both convert on urgency or certainty. Acme competes on relationship, which retains existing patients well but generates no acquisition. Nobody in this set is large enough to outspend anyone, so the market is decided by which practice answers the buyer's question first.\"},\"ts\":1788361409338}"
+      },
+      {
+        "id": 40,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 39,
+        "type": "agent_start",
+        "ts": 1788361409338,
+        "payload": "{\"type\":\"agent_start\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"ts\":1788361409338}"
+      },
+      {
+        "id": 41,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 40,
+        "type": "model_call",
+        "ts": 1788361409338,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"attempt\":1,\"ts\":1788361409338}"
+      },
+      {
+        "id": 42,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 41,
+        "type": "tool_call",
+        "ts": 1788361412441,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"callId\":\"srvtoolu_replay_0\",\"tool\":\"web_search\",\"args\":{\"query\":\"site:acmedental.com\"},\"ts\":1788361412441}"
+      },
+      {
+        "id": 43,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 42,
+        "type": "tool_result",
+        "ts": 1788361412441,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"callId\":\"srvtoolu_replay_0\",\"tool\":\"web_search\",\"ok\":true,\"summary\":\"1 results\",\"cached\":false,\"durationMs\":0,\"ts\":1788361412441}"
+      },
+      {
+        "id": 44,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 43,
+        "type": "tool_call",
+        "ts": 1788361412441,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"callId\":\"srvtoolu_replay_1\",\"tool\":\"web_search\",\"args\":{\"query\":\"acme dental portland\"},\"ts\":1788361412441}"
+      },
+      {
+        "id": 45,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 44,
+        "type": "tool_result",
+        "ts": 1788361412441,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"callId\":\"srvtoolu_replay_1\",\"tool\":\"web_search\",\"ok\":true,\"summary\":\"1 results\",\"cached\":false,\"durationMs\":0,\"ts\":1788361412441}"
+      },
+      {
+        "id": 46,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 45,
+        "type": "tool_call",
+        "ts": 1788361412441,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"callId\":\"srvtoolu_replay_2\",\"tool\":\"web_search\",\"args\":{\"query\":\"dental implants portland cost\"},\"ts\":1788361412441}"
+      },
+      {
+        "id": 47,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 46,
+        "type": "tool_result",
+        "ts": 1788361412441,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"callId\":\"srvtoolu_replay_2\",\"tool\":\"web_search\",\"ok\":true,\"summary\":\"2 results\",\"cached\":false,\"durationMs\":0,\"ts\":1788361412441}"
+      },
+      {
+        "id": 48,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 47,
+        "type": "model_call",
+        "ts": 1788361412442,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"attempt\":1,\"ts\":1788361412442}"
+      },
+      {
+        "id": 49,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 48,
+        "type": "agent_done",
+        "ts": 1788361417852,
+        "payload": "{\"type\":\"agent_done\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"OrganicVisibilityAgent\",\"durationMs\":8514,\"usage\":{\"inputTokens\":13540,\"outputTokens\":2300,\"cacheReadTokens\":2400,\"cacheCreationTokens\":0,\"costUsd\":0.1264},\"output\":{\"entries\":[{\"domain\":\"acmedental.com\",\"isProspect\":true,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"medium\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"Navigation exposes exactly four pages: home, services, about, contact. No blog, no location pages, no per-treatment pages.\"},{\"source\":\"search:site:acmedental.com\",\"excerpt\":\"Brand-name searches surface the homepage and little else beneath it.\"}],\"kind\":\"range\",\"low\":4,\"high\":12,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"estimated\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"General dentistry, cosmetic dentistry, Invisalign, dental implants and emergency care all appear as short sections of a single page.\"}],\"kind\":\"qualitative\",\"value\":\"Very thin. Five treatments are named on one shared services page, so no treatment has a page of its own that could rank for it.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"medium\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"No blog link in the navigation and no dated content on any page read.\"}],\"kind\":\"qualitative\",\"value\":\"No dated content of any kind. Nothing indicates the site has changed since it was built.\"},\"rankingTrajectory\":{\"direction\":\"flat\",\"confidence\":\"low\",\"rationale\":\"A four-page brochure site with no publishing cadence has nothing that would cause movement in either direction. Flat is the expected state, but without historical data this is inference from site structure, not measurement.\",\"evidence\":[{\"source\":\"search:acme dental portland\",\"excerpt\":\"The brand query returns the homepage. Non-brand service queries did not surface the domain at all.\"}]}},{\"domain\":\"pearlbrightdental.com\",\"isProspect\":false,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"A guides section is linked from the main navigation alongside dedicated Invisalign and pricing pages.\"}],\"kind\":\"range\",\"low\":40,\"high\":120,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"derived\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"How much does Invisalign cost in Portland. Invisalign vs braces for adults. What happens at an Invisalign consultation. Financing your treatment.\"}],\"kind\":\"qualitative\",\"value\":\"Strong on one vertical. Cost, comparison, consultation and financing questions for Invisalign each have their own guide.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Popular guides section is linked from the homepage.\"}],\"kind\":\"qualitative\",\"value\":\"Actively maintained, though no post dates were visible on the pages read.\"},\"rankingTrajectory\":{\"direction\":\"rising\",\"confidence\":\"medium\",\"rationale\":\"They hold the top result for the commercial Invisalign cost query in this city and have built a cluster around it. That is a defensible position that tends to compound.\",\"evidence\":[{\"source\":\"search:invisalign portland cost\",\"excerpt\":\"Pearlbright Dental is the leading result, with its pricing page also surfacing.\"}]}},{\"domain\":\"portlandsmileco.com\",\"isProspect\":false,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"Navigation exposes emergency, pricing and booking pages.\"}],\"kind\":\"range\",\"low\":15,\"high\":50,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"derived\",\"confidence\":\"high\",\"evidence\":[{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"Toothache, broken tooth or lost crown. Same day emergency appointments across Portland.\"}],\"kind\":\"qualitative\",\"value\":\"Narrow and deliberate. Everything points at urgent, same-day demand.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://portlandsmileco.com\",\"excerpt\":\"No blog or dated content in the navigation.\"}],\"kind\":\"qualitative\",\"value\":\"Unknown. No dated content was visible.\"},\"rankingTrajectory\":{\"direction\":\"unknown\",\"confidence\":\"low\",\"rationale\":\"They rank for the emergency query today, but nothing observable indicates whether that position is new, stable or slipping. Reporting a direction here would be a guess.\",\"evidence\":[{\"source\":\"search:emergency dentist portland\",\"excerpt\":\"Portland Smile Co appears prominently for the emergency query.\"}]}},{\"domain\":\"riversidefamilydental.com\",\"isProspect\":false,\"indexedContentVolume\":{\"label\":\"Pages likely indexed\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"A blog and dedicated implants and family care sections are linked.\"}],\"kind\":\"range\",\"low\":20,\"high\":80,\"unit\":\"pages\"},\"topicalCoverage\":{\"label\":\"Distinct buyer-intent topics covered\",\"basis\":\"derived\",\"confidence\":\"medium\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Dental implants vs bridges. What implants cost in Oregon. Recovery after implant surgery.\"}],\"kind\":\"qualitative\",\"value\":\"Moderate, concentrated on implant comparison and cost questions.\"},\"contentFreshness\":{\"label\":\"Publishing cadence\",\"basis\":\"estimated\",\"confidence\":\"low\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Blog linked from the main navigation.\"}],\"kind\":\"qualitative\",\"value\":\"A maintained blog exists, cadence unknown.\"},\"rankingTrajectory\":{\"direction\":\"flat\",\"confidence\":\"low\",\"rationale\":\"Established family practice with steady comparison content and no signal of a recent push in either direction.\",\"evidence\":[{\"source\":\"search:dental implants portland cost\",\"excerpt\":\"Riverside surfaces alongside Pearlbright for implant cost comparison queries.\"}]}}],\"methodology\":\"Every figure here comes from two sources only: the navigation and body copy of pages actually fetched, and the results of the searches listed in the evidence. Page counts are bands inferred from how many distinct sections a site links to, never a crawl and never an index count. Topical coverage is counted from named topics visible on the pages read. Trajectory is inferred from whether a domain holds a commercial query today plus whether it has a content cluster supporting that position.\",\"caveats\":[\"No analytics, Search Console or third-party rank tracking was available, so no traffic figure appears anywhere in this report and none should be inferred from it.\",\"Page count bands are wide on purpose. A site with a large unlinked archive would fall outside them.\",\"Trajectory for portlandsmileco.com is reported as unknown rather than estimated, because a single current ranking says nothing about direction.\",\"All searches were run once, unpersonalised. Local results vary by searcher location and device.\"]},\"ts\":1788361417852}"
+      },
+      {
+        "id": 50,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 49,
+        "type": "agent_start",
+        "ts": 1788361417853,
+        "payload": "{\"type\":\"agent_start\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"ts\":1788361417853}"
+      },
+      {
+        "id": 51,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 50,
+        "type": "model_call",
+        "ts": 1788361417853,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"attempt\":1,\"ts\":1788361417853}"
+      },
+      {
+        "id": 52,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 51,
+        "type": "tool_call",
+        "ts": 1788361420060,
+        "payload": "{\"type\":\"tool_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"callId\":\"replay_fetch_page_0_nrpo7g\",\"tool\":\"fetch_page\",\"args\":{\"url\":\"https://acmedental.com/contact\"},\"ts\":1788361420060}"
+      },
+      {
+        "id": 53,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 52,
+        "type": "tool_result",
+        "ts": 1788361420060,
+        "payload": "{\"type\":\"tool_result\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"callId\":\"replay_fetch_page_0_nrpo7g\",\"tool\":\"fetch_page\",\"ok\":true,\"summary\":\"https://acmedental.com/contact 200 54w 2 CTAs\",\"cached\":true,\"durationMs\":0,\"ts\":1788361420060}"
+      },
+      {
+        "id": 54,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 53,
+        "type": "model_call",
+        "ts": 1788361420061,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"attempt\":1,\"ts\":1788361420061}"
+      },
+      {
+        "id": 55,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 54,
+        "type": "agent_done",
+        "ts": 1788361425976,
+        "payload": "{\"type\":\"agent_done\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"LeakageAgent\",\"durationMs\":8122,\"usage\":{\"inputTokens\":15160,\"outputTokens\":2500,\"cacheReadTokens\":2600,\"cacheCreationTokens\":0,\"costUsd\":0.13960000000000003},\"output\":{\"conversionLeakage\":[{\"title\":\"Contact form asks for nine fields before a callback\",\"detail\":\"The only conversion path on the site is a form requiring first name, last name, email, phone, date of birth, insurance provider, insurance member ID, existing patient status and reason for visit. Insurance details are being collected before the practice has agreed to see the patient, and date of birth before any clinical relationship exists. Each additional required field costs completions, and this form has nine of them guarding a callback that then takes two business days.\",\"evidence\":[{\"source\":\"https://acmedental.com/contact\",\"excerpt\":\"fetch_page signals: formFieldCount 9, all required. Fields include Date of birth, Insurance provider and Insurance member ID.\"},{\"source\":\"https://acmedental.com/contact\",\"excerpt\":\"Fill in the form and a member of our team will call you back within two business days.\"}],\"impact\":\"high\",\"fix\":\"Cut the form to name, phone and reason for visit. Collect insurance and date of birth on the confirmation call, where a person is already talking to the patient.\",\"area\":\"form\"},{\"title\":\"No pricing anywhere on the site\",\"detail\":\"Cost is the question every prospective patient has, and the site answers it nowhere. Both leading competitors publish figures, one from $3,400 for Invisalign and one from $89 for an emergency exam. A visitor comparing three practices gets an answer from two of them and a request for their insurance ID from the third.\",\"evidence\":[{\"source\":\"https://acmedental.com/about\",\"excerpt\":\"We are in network with most major PPO plans and can discuss payment options at your first visit.\"},{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Invisalign in Portland from $3,400.\"}],\"impact\":\"high\",\"fix\":\"Publish a starting-from figure for the five named treatments. A range with an explanation of what moves it beats silence and costs nothing clinically.\",\"area\":\"pricing\"},{\"title\":\"No booking CTA above the fold on the homepage\",\"detail\":\"Both homepage calls to action sit below several paragraphs of practice history. A visitor arriving ready to book has to scroll past 2004 to find out how.\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"fetch_page signals: ctaCount 2, both appearing after the practice history and services prose. The first is 'See all services'.\"}],\"impact\":\"medium\",\"fix\":\"Put a single 'Request an appointment' button in the header, visible on load and on every page.\",\"area\":\"cta\"},{\"title\":\"Patient reviews are mentioned but never shown\",\"detail\":\"The homepage claims the practice is rated highly by the families it looks after, and then shows no rating, no review count and no quoted patient. The claim is doing none of the work a real review would do, while a competitor states 4.9 from 612 reviews on its homepage.\",\"evidence\":[{\"source\":\"https://acmedental.com\",\"excerpt\":\"We are rated highly by the families we look after and many of them have been with us for a decade.\"},{\"source\":\"https://pearlbrightdental.com\",\"excerpt\":\"Rated 4.9 from 612 reviews.\"}],\"impact\":\"medium\",\"fix\":\"Pull the existing Google rating and count onto the homepage and the contact page, with three quoted reviews next to the form.\",\"area\":\"proof\"}],\"competitorLeakage\":[{\"title\":\"Invisalign cost questions are owned by Pearlbright\",\"detail\":\"Acme provides Invisalign and gives it two sentences on a shared services page, ending in an invitation to book a consultation to find out whether you are a candidate. Pearlbright has built a guide cluster around the cost question and leads with a figure. Every Portland adult searching what Invisalign costs is being answered by the competitor, and the case is effectively decided before Acme is considered.\",\"evidence\":[{\"source\":\"search:invisalign portland cost\",\"excerpt\":\"Pearlbright Dental leads the results with 'Invisalign in Portland from $3,400', with its pricing page also surfacing.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Clear aligner treatment planned in practice. Treatment length varies by case. Book a consultation to find out whether you are a candidate.\"}],\"impact\":\"high\",\"fix\":\"Publish one page answering what Invisalign costs at this practice, with a range and what moves it, then link it from the services page.\",\"queryTheme\":\"Invisalign cost and comparison in Portland\",\"ownedBy\":[\"pearlbrightdental.com\"]},{\"title\":\"Emergency dentist searches go to Portland Smile Co\",\"detail\":\"Acme offers same day emergency appointments but restricts them to existing patients, and says so only in a single line on the services page. Portland Smile Co has built its entire site on that demand and quotes a price for the visit. This is the highest-intent search in the category and Acme is structurally excluded from it by its own policy rather than by capability.\",\"evidence\":[{\"source\":\"search:emergency dentist portland\",\"excerpt\":\"Portland Smile Co ranks prominently with 'Emergency dentist, open seven days' and 'Emergency exam from $89'.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Same day appointments for existing patients experiencing pain.\"}],\"impact\":\"high\",\"fix\":\"Decide whether emergency slots can be opened to new patients. If they can, build a page for it; if they cannot, stop competing there and put the effort into Invisalign instead.\",\"queryTheme\":\"Emergency and same-day dental care in Portland\",\"ownedBy\":[\"portlandsmileco.com\"]},{\"title\":\"No content for implant comparison queries\",\"detail\":\"Acme places and restores implants in house, which is a genuine differentiator, and has no page saying so. Riverside and Pearlbright both publish comparison and cost content for implants. The most profitable treatment on the list has the least marketing behind it.\",\"evidence\":[{\"source\":\"https://riversidefamilydental.com\",\"excerpt\":\"Implant guides. Dental implants vs bridges. What implants cost in Oregon. Recovery after implant surgery.\"},{\"source\":\"https://acmedental.com/services\",\"excerpt\":\"Single implants and implant supported bridges, placed and restored in house.\"}],\"impact\":\"medium\",\"fix\":\"Write one implants page covering cost range, implants versus bridges, and the fact that placement and restoration happen in one practice.\",\"queryTheme\":\"Dental implant cost and comparison in Oregon\",\"ownedBy\":[\"riversidefamilydental.com\",\"pearlbrightdental.com\"]}]},\"ts\":1788361425976}"
+      },
+      {
+        "id": 56,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 55,
+        "type": "agent_start",
+        "ts": 1788361425976,
+        "payload": "{\"type\":\"agent_start\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"ScoringAgent\",\"ts\":1788361425976}"
+      },
+      {
+        "id": 57,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 56,
+        "type": "model_call",
+        "ts": 1788361425976,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"ScoringAgent\",\"attempt\":1,\"ts\":1788361425976}"
+      },
+      {
+        "id": 58,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 57,
+        "type": "agent_done",
+        "ts": 1788361429389,
+        "payload": "{\"type\":\"agent_done\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"ScoringAgent\",\"durationMs\":3413,\"usage\":{\"inputTokens\":5240,\"outputTokens\":880,\"cacheReadTokens\":1200,\"cacheCreationTokens\":0,\"costUsd\":0.0488},\"output\":{\"components\":{\"fit\":{\"score\":82,\"rationale\":\"An owner-run service business with a considered purchase, entirely dependent on inbound, and no in-house marketing function. That is squarely the profile. It loses points only because the practice appears content with its retained base, which can make it a slower sale than the site suggests.\"},\"painSeverity\":{\"score\":78,\"rationale\":\"Two high-impact conversion findings and two high-impact competitor findings, and they compound: the treatments with no content are the same ones with no price, so the most profitable work is invisible twice over. Not existential, since the retained base keeps the practice full, but every new patient is being lost at a measurable point.\"},\"timingSignals\":{\"score\":55,\"rationale\":\"Genuinely mixed. A competitor has established a cost-led position in Invisalign that gets harder to displace every month, which is a real clock. Against that, nothing indicates Acme is currently feeling pain: no hiring signal, no site rebuild, no new service push. The urgency is real but it is ours, not theirs, and that has to be earned in the conversation rather than asserted.\"},\"reachability\":{\"score\":88,\"rationale\":\"A named owner, Dr. Helen Marsh, a nine-person practice, and a direct phone number on every page. The decision maker is one person and there is no procurement layer. About as reachable as B2B gets.\"}},\"rationale\":\"This is a strong prospect with an honest caveat. Acme Dental fits the profile almost exactly: a small owner-run practice that depends on inbound, has no marketing function, and is losing new patients at points that can be pinpointed and fixed. The findings are specific enough to open a conversation with something they cannot dismiss, and the decision maker is a named individual reachable by phone. The score is held out of the high eighties by timing rather than fit. Nothing on the site suggests the practice currently feels a problem, and a full retained patient list is exactly the condition under which owners defer marketing decisions. The Invisalign position a competitor has built is the strongest available reason to act now, so it should lead the sequence, and the argument for urgency has to be made rather than assumed.\",\"confidence\":\"high\"},\"ts\":1788361429389}"
+      },
+      {
+        "id": 59,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 58,
+        "type": "agent_start",
+        "ts": 1788361429391,
+        "payload": "{\"type\":\"agent_start\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CopyAgent\",\"ts\":1788361429391}"
+      },
+      {
+        "id": 60,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 59,
+        "type": "model_call",
+        "ts": 1788361429391,
+        "payload": "{\"type\":\"model_call\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CopyAgent\",\"attempt\":1,\"ts\":1788361429391}"
+      },
+      {
+        "id": 61,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 60,
+        "type": "agent_done",
+        "ts": 1788361434005,
+        "payload": "{\"type\":\"agent_done\",\"runId\":\"run_13a6321a42af474b\",\"agent\":\"CopyAgent\",\"durationMs\":4613,\"usage\":{\"inputTokens\":6180,\"outputTokens\":1340,\"cacheReadTokens\":1400,\"cacheCreationTokens\":0,\"costUsd\":0.0651},\"output\":{\"touches\":[{\"day\":0,\"channel\":\"email\",\"subject\":\"Your quote form asks for nine things\",\"body\":\"Dr. Marsh, your appointment request form asks for nine required fields, including date of birth and insurance member ID, before anyone at the practice has spoken to the patient. Then the callback takes two business days. Most practices we look at lose the majority of form starts somewhere in that stretch. The fix is small. Ask for name, phone and reason for visit, and collect the insurance details on the call you were going to make anyway. I mapped four of these on your site and two more where competitors are taking searches you could win. Worth twenty minutes to walk you through it?\",\"referencedFinding\":\"Contact form asks for nine fields before a callback\"},{\"day\":3,\"channel\":\"email\",\"subject\":\"Pearlbright owns Invisalign cost in PDX\",\"body\":\"Following the note about your form. Search Invisalign cost in Portland and Pearlbright answers it, from $3,400, with four guides built around the question. Your services page offers Invisalign in two sentences and asks people to book a consultation to find out if they qualify. So the patient comparing three practices gets a number from them and a form from you, and the case is usually decided before you are in it. You already do the treatment. One page with a range and what moves it would put you back in the comparison. Free to talk Thursday?\",\"referencedFinding\":\"Invisalign cost questions are owned by Pearlbright\"},{\"day\":7,\"channel\":\"linkedin\",\"body\":\"Dr. Marsh, I sent two notes about Acme Dental's site. Short version: your five treatments have no price anywhere, and both practices you compete with publish theirs. Patients are choosing before they call you. I put together a breakdown of where that costs you and what to change first. Want me to send it over?\",\"referencedFinding\":\"No pricing anywhere on the site\"},{\"day\":12,\"channel\":\"email\",\"subject\":\"Closing the loop on Acme Dental\",\"body\":\"Last one from me, Dr. Marsh. The thing I would still look at is emergency care. You offer same day appointments but only to existing patients, and Portland Smile Co has built a whole practice on that search. It is the highest intent query in your category and you are out of it by policy rather than capability. Either open those slots to new patients and build a page for it, or drop it and put the effort into Invisalign. Both are defensible. Doing neither is the expensive option. If this is not a priority right now, no problem, and I will leave you to it.\",\"referencedFinding\":\"Emergency dentist searches go to Portland Smile Co\"}],\"sequenceNotes\":\"Opens with the nine-field form because it is the most concrete and least arguable finding, and it costs them money today. Day 3 escalates from their own site to the competitive threat, which is the strongest argument for acting now rather than next year. The LinkedIn touch compresses both into the pricing gap, since that is the one a practice owner can verify in ten seconds. The breakup raises emergency care, deliberately held back, and frames it as a decision rather than a failure. A reply to day 0 means they will act on the site itself; a reply to day 3 or day 12 means the competitive threat landed and the conversation should be about acquisition, not conversion.\"},\"ts\":1788361434005}"
+      },
+      {
+        "id": 62,
+        "run_id": "run_13a6321a42af474b",
+        "seq": 61,
+        "type": "run_done",
+        "ts": 1788361434005,
+        "payload": "{\"type\":\"run_done\",\"runId\":\"run_13a6321a42af474b\",\"status\":\"complete\",\"durationMs\":40333,\"usage\":{\"inputTokens\":70240,\"outputTokens\":9846,\"cacheReadTokens\":15400,\"cacheCreationTokens\":0,\"costUsd\":0.6050500000000001},\"ts\":1788361434005}"
+      }
+    ],
+    "crm_companies": [
+      {
+        "id": "d8cdf463-c480-4a29-9ec4-e561400ff3c5",
+        "run_id": "run_13a6321a42af474b",
+        "domain": "acmedental.com",
+        "properties": "{\"domain\":\"acmedental.com\",\"name\":\"Acme Dental\",\"industry\":\"Families in Southeast Portland, with a strong lean toward long-term retained patients rather than new high-value cosmeti\",\"description\":\"A long-established family and cosmetic dental practice in Southeast Portland, selling calm and unhurried care rather than price or speed.\",\"website\":\"https://acmedental.com\",\"lifecyclestage\":\"lead\"}",
+        "created_at": 1788361434006,
+        "updated_at": 1788361434006
+      }
+    ],
+    "crm_contacts": [
+      {
+        "id": "8983dcfa-3f66-43b2-a5e7-a1a78816b871",
+        "run_id": "run_13a6321a42af474b",
+        "company_id": "d8cdf463-c480-4a29-9ec4-e561400ff3c5",
+        "email": "hello@acmedental.com",
+        "properties": "{\"email\":\"hello@acmedental.com\",\"jobtitle\":\"Unverified - enrich before sending\",\"hs_lead_status\":\"NEW\",\"lifecyclestage\":\"lead\"}",
+        "created_at": 1788361434007,
+        "updated_at": 1788361434007
+      }
+    ],
+    "crm_deals": [
+      {
+        "id": "214b0d73-a83c-4539-8919-46c6c6811af3",
+        "run_id": "run_13a6321a42af474b",
+        "company_id": "d8cdf463-c480-4a29-9ec4-e561400ff3c5",
+        "properties": "{\"dealname\":\"Acme Dental - inbound conversion audit\",\"dealstage\":\"appointmentscheduled\",\"pipeline\":\"default\"}",
+        "created_at": 1788361434007
+      }
+    ],
+    "crm_notes": [
+      {
+        "id": "35bfcee2-4cba-44b8-892d-d44af4db798d",
+        "run_id": "run_13a6321a42af474b",
+        "object_type": "company",
+        "object_id": "d8cdf463-c480-4a29-9ec4-e561400ff3c5",
+        "properties": "{\"hs_timestamp\":\"2026-09-02T15:03:54.008Z\",\"hs_note_body\":\"Outbound Engine run run_13a6321a42af474b\\nICP fit 76/100, tier A\\n\\nThis is a strong prospect with an honest caveat. Acme Dental fits the profile almost exactly: a small owner-run practice that depends on inbound, has no marketing function, and is losing new patients at points that can be pinpointed and fixed. The findings are specific enough to open a conversation with something they cannot dismiss, and the decision maker is a named individual reachable by phone. The score is held out of the high eighties by timing rather than fit. Nothing on the site suggests the practice currently feels a problem, and a full retained patient list is exactly the condition under which owners defer marketing decisions. The Invisalign position a competitor has built is the strongest available reason to act now, so it should lead the sequence, and the argument for urgency has to be made rather than assumed.\\n\\nConversion leakage:\\n- [high] Contact form asks for nine fields before a callback. Fix: Cut the form to name, phone and reason for visit. Collect insurance and date of birth on the confirmation call, where a person is already talking to the patient.\\n- [high] No pricing anywhere on the site. Fix: Publish a starting-from figure for the five named treatments. A range with an explanation of what moves it beats silence and costs nothing clinically.\\n- [medium] No booking CTA above the fold on the homepage. Fix: Put a single 'Request an appointment' button in the header, visible on load and on every page.\\n- [medium] Patient reviews are mentioned but never shown. Fix: Pull the existing Google rating and count onto the homepage and the contact page, with three quoted reviews next to the form.\\n\\nCompetitor leakage:\\n- [high] Invisalign cost questions are owned by Pearlbright (owned by pearlbrightdental.com). Fix: Publish one page answering what Invisalign costs at this practice, with a range and what moves it, then link it from the services page.\\n- [high] Emergency dentist searches go to Portland Smile Co (owned by portlandsmileco.com). Fix: Decide whether emergency slots can be opened to new patients. If they can, build a page for it; if they cannot, stop competing there and put the effort into Invisalign instead.\\n- [medium] No content for implant comparison queries (owned by riversidefamilydental.com, pearlbrightdental.com). Fix: Write one implants page covering cost range, implants versus bridges, and the fact that placement and restoration happen in one practice.\"}",
+        "created_at": 1788361434008
+      }
+    ],
+    "crm_activities": [
+      {
+        "id": "bc37f3d8-8204-4018-9041-1cbaff6632c4",
+        "run_id": "run_13a6321a42af474b",
+        "object_type": "deal",
+        "object_id": "214b0d73-a83c-4539-8919-46c6c6811af3",
+        "properties": "{\"hs_timestamp\":\"2026-09-02T15:03:54.008Z\",\"hs_activity_type\":\"EMAIL\",\"hs_body_preview\":\"Queued a 4-touch sequence. First touch: Your quote form asks for nine things\"}",
+        "created_at": 1788361434008
+      }
+    ],
+    "email_outbox": [
+      {
+        "id": "53a9c61f-3ab3-486e-a3ba-7288b459b027",
+        "run_id": "run_13a6321a42af474b",
+        "to_email": "hello@acmedental.com",
+        "subject": "Your quote form asks for nine things",
+        "body": "Dr. Marsh, your appointment request form asks for nine required fields, including date of birth and insurance member ID, before anyone at the practice has spoken to the patient. Then the callback takes two business days. Most practices we look at lose the majority of form starts somewhere in that stretch. The fix is small. Ask for name, phone and reason for visit, and collect the insurance details on the call you were going to make anyway. I mapped four of these on your site and two more where competitors are taking searches you could win. Worth twenty minutes to walk you through it?",
+        "channel": "email",
+        "send_at": null,
+        "status": "sent",
+        "created_at": 1788361434008
+      },
+      {
+        "id": "07573c7c-0c71-489b-80c3-6afad38bfc2a",
+        "run_id": "run_13a6321a42af474b",
+        "to_email": "hello@acmedental.com",
+        "subject": "Pearlbright owns Invisalign cost in PDX",
+        "body": "Following the note about your form. Search Invisalign cost in Portland and Pearlbright answers it, from $3,400, with four guides built around the question. Your services page offers Invisalign in two sentences and asks people to book a consultation to find out if they qualify. So the patient comparing three practices gets a number from them and a form from you, and the case is usually decided before you are in it. You already do the treatment. One page with a range and what moves it would put you back in the comparison. Free to talk Thursday?",
+        "channel": "email",
+        "send_at": 1788620634008,
+        "status": "scheduled",
+        "created_at": 1788361434008
+      },
+      {
+        "id": "dad67135-5167-4762-a20b-5ad0ecb73f17",
+        "run_id": "run_13a6321a42af474b",
+        "to_email": "hello@acmedental.com",
+        "subject": "Note for Acme Dental",
+        "body": "Dr. Marsh, I sent two notes about Acme Dental's site. Short version: your five treatments have no price anywhere, and both practices you compete with publish theirs. Patients are choosing before they call you. I put together a breakdown of where that costs you and what to change first. Want me to send it over?",
+        "channel": "linkedin",
+        "send_at": 1788966234008,
+        "status": "scheduled",
+        "created_at": 1788361434008
+      },
+      {
+        "id": "fb0fc932-3ec5-4dc6-82df-24e733076d55",
+        "run_id": "run_13a6321a42af474b",
+        "to_email": "hello@acmedental.com",
+        "subject": "Closing the loop on Acme Dental",
+        "body": "Last one from me, Dr. Marsh. The thing I would still look at is emergency care. You offer same day appointments but only to existing patients, and Portland Smile Co has built a whole practice on that search. It is the highest intent query in your category and you are out of it by policy rather than capability. Either open those slots to new patients and build a page for it, or drop it and put the effort into Invisalign. Both are defensible. Doing neither is the expensive option. If this is not a priority right now, no problem, and I will leave you to it.",
+        "channel": "email",
+        "send_at": 1789398234008,
+        "status": "scheduled",
+        "created_at": 1788361434008
+      }
+    ],
+    "calendar_bookings": [
+      {
+        "id": "4073bca6-eb35-468a-9a22-db9b8dfbcf42",
+        "run_id": "run_13a6321a42af474b",
+        "slots": "[{\"startsAt\":\"2026-09-03T05:00:00.000Z\",\"endsAt\":\"2026-09-03T05:30:00.000Z\",\"label\":\"Thu, Sep 3, 10:00 AM\"},{\"startsAt\":\"2026-09-04T09:00:00.000Z\",\"endsAt\":\"2026-09-04T09:30:00.000Z\",\"label\":\"Fri, Sep 4, 2:00 PM\"},{\"startsAt\":\"2026-09-07T06:00:00.000Z\",\"endsAt\":\"2026-09-07T06:30:00.000Z\",\"label\":\"Mon, Sep 7, 11:00 AM\"}]",
+        "booking_url": "https://cal.example/outbound-engine/4073bca6?ref=acmedental.com",
+        "created_at": 1788361434023
+      }
+    ]
+  }
+}

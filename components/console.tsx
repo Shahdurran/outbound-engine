@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { RunRow } from "../lib/db/runs";
 import type { RunArtifacts } from "../lib/orchestrator";
 import type { RunMode, TraceEvent } from "../lib/trace";
@@ -72,6 +72,8 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
   const [state, setState] = useState<ConsoleState>(() => initialState(mode, model));
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [initialTab, setInitialTab] = useState<string | null>(null);
+  const [savedCrm, setSavedCrm] = useState<unknown>(null);
 
   const refreshRuns = useCallback(async () => {
     try {
@@ -90,6 +92,7 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
 
       setBusy(true);
       setError(null);
+      setSavedCrm(null);
       setState(initialState(mode, model));
 
       try {
@@ -143,7 +146,9 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
           run: RunRow;
           trace: TraceEvent[];
           artifacts: RunArtifacts;
+          crm: unknown;
         };
+        setSavedCrm(payload.crm ?? null);
         setState({
           ...replayTrace(payload.trace, payload.run.mode, payload.run.model),
           artifacts: payload.artifacts,
@@ -151,6 +156,9 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
         });
         setDomain(payload.run.domain);
         setIcp(payload.run.icp ?? "");
+
+        // A run is a thing you send someone, so give it a URL.
+        window.history.replaceState(null, "", `?run=${encodeURIComponent(id)}`);
       } catch (cause) {
         setError(cause instanceof Error ? cause.message : String(cause));
       } finally {
@@ -159,6 +167,17 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
     },
     [],
   );
+
+  // Open whatever ?run= and ?tab= point at, so a link lands on the same view
+  // the sender was looking at.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get("tab");
+    if (tabParam) setInitialTab(tabParam);
+
+    const runParam = params.get("run");
+    if (runParam) void openRun(runParam);
+  }, [openRun]);
 
   const emptyHint =
     mode === "replay"
@@ -308,7 +327,12 @@ export function Console({ initialRuns, mode, model, recorded }: Props) {
 
       {/* Right: artifacts */}
       <section className="min-h-0 overflow-hidden">
-        <ArtifactsPanel artifacts={state.artifacts} runId={state.runId} />
+        <ArtifactsPanel
+          artifacts={state.artifacts}
+          runId={state.runId}
+          initialTab={initialTab}
+          savedCrm={savedCrm}
+        />
       </section>
     </div>
   );

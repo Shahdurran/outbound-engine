@@ -1,5 +1,5 @@
 import { loadArtifacts } from "../../../../lib/artifacts";
-import { getRun, getSteps, getTrace } from "../../../../lib/db/runs";
+import { getCrmWrites, getRun, getSteps, getTrace } from "../../../../lib/db/runs";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -25,5 +25,6 @@ export async function GET(
     steps: getSteps(id),
     trace: getTrace(id),
     artifacts: loadArtifacts(id),
+    crm: getCrmWrites(id),
   });
 }

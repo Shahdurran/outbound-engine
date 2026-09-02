@@ -22,7 +22,10 @@ export type ProviderResolution =
   | { ok: true; provider: Provider }
   | { ok: false; message: string; recordedDomains: { domain: string; label: string }[] };
 
-export function resolveProvider(domain: string): ProviderResolution {
+export function resolveProvider(
+  domain: string,
+  options: { replaySpeed?: number } = {},
+): ProviderResolution {
   if (hasApiKey()) {
     return { ok: true, provider: new LiveProvider() };
   }
@@ -45,7 +48,10 @@ export function resolveProvider(domain: string): ProviderResolution {
     primePageCache(page.url, page.html);
   }
 
-  return { ok: true, provider: new ReplayProvider(recording, resolveModel()) };
+  return {
+    ok: true,
+    provider: new ReplayProvider(recording, resolveModel(), options.replaySpeed),
+  };
 }
 
 export function newRunId(): string {

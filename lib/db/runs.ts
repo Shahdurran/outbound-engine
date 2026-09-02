@@ -174,6 +174,58 @@ export function getSteps(runId: string): AgentStepRow[] {
     .all(runId) as AgentStepRow[];
 }
 
+/**
+ * Everything the mock adapters wrote for a run.
+ *
+ * Reopening a past run should show what was actually pushed, not an empty
+ * tab - the CRM payloads are part of the artifact, not a transient result of
+ * having clicked the button this session.
+ */
+export function getCrmWrites(runId: string): Record<string, unknown> | null {
+  const db = getDb();
+
+  const parse = <T>(rows: { properties: string; id: string }[]): T[] =>
+    rows.map((row) => ({ id: row.id, properties: JSON.parse(row.properties) }) as T);
+
+  const companies = parse(
+    db.prepare(`SELECT id, properties FROM crm_companies WHERE run_id = ?`).all(runId) as {
+      id: string;
+      properties: string;
+    }[],
+  );
+  if (companies.length === 0) return null;
+
+  const table = (name: string) =>
+    parse(
+      db.prepare(`SELECT id, properties FROM ${name} WHERE run_id = ?`).all(runId) as {
+        id: string;
+        properties: string;
+      }[],
+    );
+
+  const outbox = db
+    .prepare(
+      `SELECT id, to_email, subject, channel, status, send_at FROM email_outbox WHERE run_id = ?`,
+    )
+    .all(runId);
+
+  const booking = db
+    .prepare(`SELECT id, slots, booking_url FROM calendar_bookings WHERE run_id = ? LIMIT 1`)
+    .get(runId) as { id: string; slots: string; booking_url: string } | undefined;
+
+  return {
+    company: companies[0],
+    contact: table("crm_contacts")[0] ?? null,
+    deal: table("crm_deals")[0] ?? null,
+    note: table("crm_notes")[0] ?? null,
+    activity: table("crm_activities")[0] ?? null,
+    scheduled: outbox,
+    booking: booking
+      ? { id: booking.id, slots: JSON.parse(booking.slots), bookingUrl: booking.booking_url }
+      : null,
+  };
+}
+
 export function getTrace(runId: string): TraceEvent[] {
   const rows = getDb()
     .prepare(`SELECT payload FROM trace_events WHERE run_id = ? ORDER BY seq`)

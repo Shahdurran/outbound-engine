@@ -19,7 +19,7 @@ import { ProviderError } from "./types";
  *     validation fails `npm run typecheck` instead of failing at demo time.
  */
 
-const SPEED = Number(process.env.REPLAY_SPEED ?? "1");
+const ENV_SPEED = Number(process.env.REPLAY_SPEED ?? "1");
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, Math.max(0, ms)));
@@ -99,11 +99,16 @@ export class ReplayProvider implements Provider {
   readonly model: string;
   private cursors = new Map<AgentName, number>();
 
+  private speed: number;
+
   constructor(
     private recording: RecordedRun,
     model: string,
+    /** Overrides REPLAY_SPEED. Boot-time seeding replays fast; nobody watches it. */
+    speed?: number,
   ) {
     this.model = model;
+    this.speed = speed ?? ENV_SPEED ?? 1;
   }
 
   async createMessage(request: ProviderRequest): Promise<ProviderResponse> {
@@ -123,7 +128,7 @@ export class ReplayProvider implements Provider {
 
     // Pace the replay so the console streams rather than dumping. This is the
     // recorded latency, not an invented delay.
-    await sleep(turn.delayMs / (SPEED || 1));
+    await sleep(turn.delayMs / (this.speed || 1));
 
     const counts = {
       inputTokens: turn.usage.input,

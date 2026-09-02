@@ -480,19 +480,34 @@ function Crm({ payload }: { payload: unknown }) {
   );
 }
 
+function asTab(value: string | null): Tab | null {
+  return TABS.find((name) => name.toLowerCase() === value?.toLowerCase()) ?? null;
+}
+
 export function ArtifactsPanel({
   artifacts,
   runId,
+  initialTab = null,
+  savedCrm = null,
 }: {
   artifacts: RunArtifacts | null;
   runId: string | null;
+  initialTab?: string | null;
+  /** What this run previously wrote, so reopening it is not a blank tab. */
+  savedCrm?: unknown;
 }) {
-  const [tab, setTab] = useState<Tab>("Dossier");
-  const [crmPayload, setCrmPayload] = useState<unknown>(null);
+  const [tab, setTab] = useState<Tab>(() => asTab(initialTab) ?? "Dossier");
+  const [crmPayload, setCrmPayload] = useState<unknown>(savedCrm);
 
   useEffect(() => {
-    setCrmPayload(null);
-  }, [runId]);
+    setCrmPayload(savedCrm);
+  }, [runId, savedCrm]);
+
+  // ?tab= is read after mount, so honour it when it lands.
+  useEffect(() => {
+    const requested = asTab(initialTab);
+    if (requested) setTab(requested);
+  }, [initialTab]);
 
   const counts = useMemo(() => {
     if (!artifacts) return {} as Partial<Record<Tab, number>>;

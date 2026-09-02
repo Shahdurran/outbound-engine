@@ -1,11 +1,18 @@
--- Outbound Engine persistence.
+/**
+ * The schema, inlined as a string rather than read from a .sql file at runtime.
+ *
+ * Serverless bundlers do not trace a file that is only opened through a runtime
+ * path, so reading schema.sql worked locally and would have failed on the first
+ * query in a deployed function with a missing-file error.
+ */
+export const SCHEMA_SQL = `-- Outbound Engine persistence.
 --
 -- Three groups of tables:
 --   1. Runs, agent steps and trace events   - the agent console and its replay
 --   2. page_cache                           - so re-runs are cheap
 --   3. crm_* / email_outbox / calendar_*    - what the mock adapters write
 --
--- The crm_* tables deliberately store a HubSpot-shaped `properties` JSON blob
+-- The crm_* tables deliberately store a HubSpot-shaped "properties" JSON blob
 -- rather than exploding properties into columns. That is what makes the real
 -- HubSpot adapter a drop-in swap: the payload we build here is the payload
 -- their API expects.
@@ -143,3 +150,4 @@ CREATE TABLE IF NOT EXISTS calendar_bookings (
   booking_url  TEXT NOT NULL,
   created_at   INTEGER NOT NULL
 );
+`;
